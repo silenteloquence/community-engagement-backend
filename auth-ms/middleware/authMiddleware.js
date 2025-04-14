@@ -1,6 +1,6 @@
+import jwt from 'jsonwebtoken'
 
-const jwt = require('jsonwebtoken');
-module.exports = (req) => {
+export default function authMiddleware(req) {
   const authHeader = req.headers.authorization || '';
   const token = authHeader.replace('Bearer ', '');
   if (!token) return {};
@@ -10,4 +10,4 @@ module.exports = (req) => {
   } catch {
     return {};
   }
-};
+}
